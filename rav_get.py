@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat May 30 15:11:32 2020
+A small group of functions to make calling the Ravelry API easier
 
 @author: Ana
 """
 import requests
 from requests.auth import HTTPBasicAuth
 import csv
+import math
 
 def ravelry_search(rav_query, rav_auth):
     # rav_query: dictionary of query items
@@ -35,6 +36,7 @@ def ravelry_get_ids(rav_result):
     # Returns the id string that can be used to query patterns
     # input: rav_result: output from ravelry_search
     # output: id_list: formatted string of ids
+    rav_json = rav_result.json()
     
     id_list = ''
     
