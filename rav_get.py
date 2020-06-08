@@ -19,12 +19,13 @@ def ravelry_search(rav_query, rav_session):
     
     return rav_request
 
-def ravelry_patterns(rav_ids, rav_session):
+def ravelry_patterns(rav_result, rav_session):
     # rav_ids: space delimited string of ids
     # rav_auth: list of ravelry name and password
     # returns the request response object
     
     rav_url = "https://api.ravelry.com/patterns.json"
+    rav_ids = ravelry_get_ids(rav_result)
     rav_params = {'ids':rav_ids}
 
     rav_request = rav_session.get(url = rav_url, params = rav_params)
