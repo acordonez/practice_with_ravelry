@@ -5,22 +5,20 @@ A small group of functions to make calling the Ravelry API easier
 @author: Ana
 """
 import requests
-from requests.auth import HTTPBasicAuth
 import csv
-import math
 
-def ravelry_search(rav_query, rav_auth):
+def ravelry_search(rav_query, rav_session):
     # rav_query: dictionary of query items
     # rav_auth: list of ravelry name and password
     
     rav_url = "https://api.ravelry.com/patterns/search.json"
     rav_params = rav_query
 
-    rav_request = requests.get(url = rav_url, params = rav_params, auth=HTTPBasicAuth(rav_auth[0][0], rav_auth[0][1])) 
+    rav_request = rav_session.get(url = rav_url, params = rav_params) 
     
-    return rav_request.json()
+    return rav_request
 
-def ravelry_patterns(rav_ids, rav_auth):
+def ravelry_patterns(rav_ids, rav_session):
     # rav_ids: space delimited string of ids
     # rav_auth: list of ravelry name and password
     # returns dictionary of patterns
@@ -28,9 +26,9 @@ def ravelry_patterns(rav_ids, rav_auth):
     rav_url = "https://api.ravelry.com/patterns.json"
     rav_params = {'ids':rav_ids}
 
-    rav_request = requests.get(url = rav_url, params = rav_params, auth=HTTPBasicAuth(rav_auth[0][0], rav_auth[0][1]))
+    rav_request = rav_session.get(url = rav_url, params = rav_params)
   
-    return rav_request.json()
+    return rav_request
 
 def ravelry_get_ids(rav_result):
     # Returns the id string that can be used to query patterns
@@ -47,9 +45,12 @@ def ravelry_get_ids(rav_result):
 
 def ravelry_load_auth(auth_file):
     # loads your ravelry api authentication info from csv
+    # and creates a session
+    rav_session = requests.Session()
     
     with open(auth_file) as f:
         reader = csv.reader(f)
         rav_auth = list(reader)
         
-    return rav_auth
+    rav_session.auth = (rav_auth[0][0], rav_auth[0][1])
+    return rav_session
