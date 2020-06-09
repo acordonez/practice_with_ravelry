@@ -17,6 +17,8 @@ def ravelry_pattern_search(rav_query, rav_session):
 
     rav_request = rav_session.get(url = rav_url, params = rav_params) 
     
+    rav_request.raise_for_status()
+    
     return rav_request
 
 def ravelry_project_search(rav_query, rav_session):
@@ -28,6 +30,8 @@ def ravelry_project_search(rav_query, rav_session):
     rav_params = rav_query
 
     rav_request = rav_session.get(url = rav_url, params = rav_params) 
+    
+    rav_request.raise_for_status()
     
     return rav_request
 
@@ -43,6 +47,8 @@ def ravelry_patterns(rav_result, rav_session):
 
     rav_request = rav_session.get(url = rav_url, params = rav_params)
   
+    rav_request.raise_for_status()
+    
     return rav_request
 
 def ravelry_get_ids(rav_result):
