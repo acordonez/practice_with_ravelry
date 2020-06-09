@@ -7,7 +7,7 @@ A small group of functions to make calling the Ravelry API easier
 import requests
 import csv
 
-def ravelry_search(rav_query, rav_session):
+def ravelry_pattern_search(rav_query, rav_session):
     # rav_query: dictionary of query items
     # rav_auth: list of ravelry name and password
     # returns the request response object
@@ -19,9 +19,22 @@ def ravelry_search(rav_query, rav_session):
     
     return rav_request
 
+def ravelry_project_search(rav_query, rav_session):
+    # rav_query: dictionary of query items
+    # rav_session: requests session object
+    # returns the request response object
+    
+    rav_url = "https://api.ravelry.com/projects/search.json"
+    rav_params = rav_query
+
+    rav_request = rav_session.get(url = rav_url, params = rav_params) 
+    
+    return rav_request
+
+
 def ravelry_patterns(rav_result, rav_session):
     # rav_ids: space delimited string of ids
-    # rav_auth: list of ravelry name and password
+    # rav_session: requests session object
     # returns the request response object
     
     rav_url = "https://api.ravelry.com/patterns.json"
@@ -34,15 +47,15 @@ def ravelry_patterns(rav_result, rav_session):
 
 def ravelry_get_ids(rav_result):
     # Returns the id string that can be used to query patterns
-    # input: rav_result: output from ravelry_search
-    # output: id_list: formatted string of ids
+    # rav_result: output from ravelry_search
+    # id_list: formatted string of ids
     
     rav_json = rav_result.json()
     
     id_list = ''
     
-    for key in range(len(rav_json['patterns'])):
-        id_list += (str(rav_json['patterns'][key]['id']) + ' ')
+    for key in range(len(rav_json['pattern'])):
+        id_list += (str(rav_json['pattern'][key]['id']) + ' ')
         
     # remove the last white space
     return id_list[:-1]
@@ -50,6 +63,7 @@ def ravelry_get_ids(rav_result):
 def ravelry_load_auth(auth_file):
     # loads your ravelry api authentication info from csv
     # and creates and returns a session object
+    # auth_file: string, csv file with username,password
     
     rav_session = requests.Session()
     
