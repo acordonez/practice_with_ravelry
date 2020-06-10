@@ -60,8 +60,8 @@ def ravelry_get_ids(rav_result):
     
     id_list = ''
     
-    for key in range(len(rav_json['pattern'])):
-        id_list += (str(rav_json['pattern'][key]['id']) + ' ')
+    for key in range(len(rav_json['patterns'])):
+        id_list += (str(rav_json['patterns'][key]['id']) + ' ')
         
     # remove the last white space
     return id_list[:-1]
