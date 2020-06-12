@@ -77,6 +77,24 @@ def ravelry_get_ids(rav_result):
     # remove the last white space
     return id_list[:-1]
 
+def ravelry_pattern_categories(rav_session):
+    # returns a json of all the possible pattern categories
+    
+    rav_url = "https://api.ravelry.com/pattern_categories/list.json"
+    
+    rav_request = rav_session.get(url = rav_url)
+
+    return rav_request
+    
+def ravelry_pattern_attributes(rav_session):
+    # returns a json of all the possible pattern attributes
+    
+    rav_url = "https://api.ravelry.com/pattern_attributes/groups.json"
+    
+    rav_request = rav_session.get(url = rav_url)
+
+    return rav_request
+
 def ravelry_load_auth(auth_file):
     # loads your ravelry api authentication info from csv
     # and creates and returns a session object
