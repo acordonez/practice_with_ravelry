@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-The ravelry_session class collects the api request
-functions for querying the ravelry.com data. 
+The ravelry_session class is a collection of api request
+functions for more easily querying the Ravelry.com data. 
+
+For queries, you can use the same keywords and search
+terms that are used on the Ravelry.com search pages
 
 @author: Ana
 """
@@ -162,6 +165,7 @@ class ravelry_session():
     def get_pattern_categories(self):
         """ 
         Returns the full list of all Ravelry pattern categories
+        Use the .json() method to view the results
         """
     
         rav_url = "https://api.ravelry.com/pattern_categories/list.json"
@@ -171,6 +175,7 @@ class ravelry_session():
     def get_pattern_attributes(self):
         """ 
         Returns the full list of all Ravelry pattern attributes
+        Use the .json() method to view the results
         """
     
         rav_url = "https://api.ravelry.com/pattern_attributes/groups.json"
