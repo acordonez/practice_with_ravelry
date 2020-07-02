@@ -3,7 +3,8 @@ This is a collection of functions and Jupyter Notebooks that I am using for Pyth
 
 ## Prerequisites
 - Have Python 3 installed
-- Get Ravelry API key (Basic Auth works. See https://www.ravelry.com/api)
+- Install the following packages: requests, csv, numpy, datetime, matplotlib, scipy (only requests and csv are needed to use the rav_get functions or ravelry_session class)
+- Get Ravelry API key (Basic Auth is ok. See https://www.ravelry.com/api)
 
 ## Installation
 1. Clone the repo (git clone https://github.com/acordonez/practice_with_ravelry.git)
