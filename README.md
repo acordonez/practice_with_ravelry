@@ -8,7 +8,7 @@ This is a collection of functions and Jupyter Notebooks that I am using for Pyth
 ## Installation
 1. Clone the repo (git clone https://github.com/acordonez/practice_with_ravelry.git)
 2. Go to practice_with_ravelry directory
-3. Create a ravelry_auth.csv document. This document contains *username,password*. (Csv files have been added to .gitignore)
+3. Create a ravelry_auth.csv document. This document contains *username,password* for your Ravelry project. (Csv files have been added to .gitignore)
 
 ## How to use
 For running Jupyter Notebooks, see these instructions: https://jupyter.readthedocs.io/en/latest/running.html
