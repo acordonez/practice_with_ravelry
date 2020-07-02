@@ -15,5 +15,19 @@ For running Jupyter Notebooks, see these instructions: https://jupyter.readthedo
 
 To use the functions in rav_get for your own API requests, use `from rav_get import *` from within the same directory as rav_get.py.
 
+### Examples for ravelry_session
+
+Initialize a Ravelry session:
+`from ravelry_session import ravelry_session`
+`s = ravelry_session('ravelry_auth.csv')`
+
+Make a query for certain types of patterns, sorted by most relevant:
+`my_query = {'query': 'cables', 'pc': 'hat', 'weight': 'dk', 'sort': 'best'}`
+`results = s.pattern_search(my_query)`
+You can use any of the keywords used in the pattern search on Ravelry.com (look at the keywords in the URL for a search).
+
+This returns an http request object (more info at https://requests.readthedocs.io/en/master/). To view the json data use:
+`results.json()`
+
 ## Acknowledgements
 I spent some time using https://github.com/walkerkq/ravelRy to understand how to use the Ravelry API - it's a great tool for folks who are proficient in R. I have borrowed some concepts from that tool here.
