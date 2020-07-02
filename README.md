@@ -17,16 +17,16 @@ To use the functions in rav_get for your own API requests, use `from rav_get imp
 
 ### Examples for ravelry_session
 
-Initialize a Ravelry session:
-`from ravelry_session import ravelry_session`
-`s = ravelry_session('ravelry_auth.csv')`
+Initialize a Ravelry session:  
+`from ravelry_session import ravelry_session  
+s = ravelry_session('ravelry_auth.csv')`
+  
+Make a query for certain types of patterns, sorted by most relevant:  
+`my_query = {'query': 'cables', 'pc': 'hat', 'weight': 'dk', 'sort': 'best'}  
+results = s.pattern_search(my_query)`  
+You can use any of the keywords used in the pattern search on Ravelry.com (look at the keywords in the URL for a search).  
 
-Make a query for certain types of patterns, sorted by most relevant:
-`my_query = {'query': 'cables', 'pc': 'hat', 'weight': 'dk', 'sort': 'best'}`
-`results = s.pattern_search(my_query)`
-You can use any of the keywords used in the pattern search on Ravelry.com (look at the keywords in the URL for a search).
-
-This returns an http request object (more info at https://requests.readthedocs.io/en/master/). To view the json data use:
+This returns an http request object (more info at https://requests.readthedocs.io/en/master/). To view the json data use:  
 `results.json()`
 
 ## Acknowledgements
